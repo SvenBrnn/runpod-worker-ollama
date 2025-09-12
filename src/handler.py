@@ -1,7 +1,10 @@
 import runpod
+import os
 from utils import JobInput
 from engine import OllamaEngine, OllamaOpenAiEngine
 
+DEFAULT_MAX_CONCURRENCY = 8
+max_concurrency = int(os.getenv("MAX_CONCURRENCY", DEFAULT_MAX_CONCURRENCY))
 
 async def handler(job: any):
     # Just dump the whole input to the console and then return an {"ok": True} response
@@ -27,6 +30,7 @@ async def handler(job: any):
 runpod.serverless.start(
     {
         "handler": handler,
+        "concurrency_modifier": lambda x: max_concurrency,
         "return_aggregate_stream": True,
     }
 )

@@ -13,13 +13,33 @@
     "env": [
       {
         "key": "MODEL_NAME",
-          "input": {
-            "name": "Model Name",
-            "type": "string",
-            "description": "Name of a model to preload",
-            "default": "phi3",
-            "advanced": false
-          }
+        "input": {
+          "name": "Model Name",
+          "type": "string",
+          "description": "Name of a model to preload",
+          "default": "phi3",
+          "advanced": false
+        }
+      },
+      {
+        "key": "MAX_CONCURRENCY",
+        "input": {
+          "name": "Max Concurrency",
+          "type": "number",
+          "description": "Maximum number of concurrent requests to handle (default: 8)",
+          "default": 8,
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_NUM_PARALLEL",
+        "input": {
+          "name": "Parallel Requests",
+          "type": "string",
+          "description": "Maximum number of concurrent requests to handle (default: 4 or 1)",
+          "default": "",
+          "advanced": true
+        }
       }
     ]
   }
