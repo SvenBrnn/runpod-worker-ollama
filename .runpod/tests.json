@@ -3,7 +3,7 @@
     {
       "name": "execute_a_prompt",
       "input": {
-        "prompt": "Say: Hallo World!"
+        "prompt": "Say: Hello World!"
       },
       "timeout": 120000
     }
@@ -13,12 +13,18 @@
     "gpuCount": 1,
     "env": [
       {
-        "key": "OLLAMA_MODEL_NAME",
-        "value": "phi3"
+        "key": "INFLECT_MODEL_NAME",
+        "value": "main"
+      },
+      {
+        "key": "INFLECT_CONFIG_URL",
+        "value": "https://git.mainasara.dev/qrk/knowledge/raw/branch/main/malik/inflect.toml"
+      },
+      {
+        "key": "INFLECT_SYSTEM_NAME",
+        "value": "Malik"
       }
     ],
-    "allowedCudaVersions": [
-      "12.8"
-    ]
+    "allowedCudaVersions": ["12.8"]
   }
 }

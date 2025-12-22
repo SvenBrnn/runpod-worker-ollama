@@ -1,9 +1,9 @@
 {
-  "title": "Runpod Worker Ollama",
-  "description": "A serverless Ollama Worker for Runpod",
+  "title": "Runpod Worker Inflect",
+  "description": "A serverless Inflect Worker for Runpod",
   "type": "serverless",
   "category": "language",
-  "iconUrl": "https://ollama.com/public/ollama.png",
+  "iconUrl": "https://avatars.githubusercontent.com/u/213868091?s=48&v=4",
   "config": {
     "runsOn": "GPU",
     "gpuCount": 1,
@@ -12,12 +12,32 @@
     "presets": [],
     "env": [
       {
-        "key": "OLLAMA_MODEL_NAME",
+        "key": "INFLECT_CONFIG_URL",
+        "input": {
+          "name": "inflect Config URL",
+          "type": "string",
+          "description": "URL of an inflect config to preload",
+          "default": "",
+          "advanced": false
+        }
+      },
+      {
+        "key": "INFLECT_MODEL_NAME",
         "input": {
           "name": "Model Name",
           "type": "string",
           "description": "Name of a model to preload",
-          "default": "phi3",
+          "default": "",
+          "advanced": false
+        }
+      },
+      {
+        "key": "INFLECT_SYSTEM_NAME",
+        "input": {
+          "name": "System Name",
+          "type": "string",
+          "description": "Name of a system to preload",
+          "default": "",
           "advanced": false
         }
       },
@@ -28,16 +48,6 @@
           "type": "number",
           "description": "Maximum number of concurrent requests to handle (default: 8)",
           "default": 8,
-          "advanced": true
-        }
-      },
-      {
-        "key": "OLLAMA_NUM_PARALLEL",
-        "input": {
-          "name": "Parallel Requests",
-          "type": "string",
-          "description": "Maximum number of concurrent requests to handle (default: 4 or 1)",
-          "default": "",
           "advanced": true
         }
       }
