@@ -18,11 +18,11 @@
       },
       {
         "key": "INFLECT_CONFIG_URL",
-        "value": "https://git.mainasara.dev/qrk/knowledge/raw/branch/main/malik/inflect.toml"
+        "value": "https://git.mainasara.dev/qrk/knowledge/raw/branch/main/runpod/inflect.toml"
       },
       {
         "key": "INFLECT_SYSTEM_NAME",
-        "value": "Malik"
+        "value": "runpod"
       }
     ],
     "allowedCudaVersions": ["12.8"]
