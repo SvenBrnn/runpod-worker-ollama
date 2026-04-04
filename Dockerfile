@@ -4,8 +4,6 @@ ARG OLLAMA_VERSION=0.20.0
 FROM ollama/ollama:${OLLAMA_VERSION}
 
 ENV PYTHONUNBUFFERED=1
-# Set defaut ollama models directory to /runpod-volume where runpod will mount the volume by default
-ENV OLLAMA_MODELS="/runpod-volume"
 
 
 # Set up the working directory
@@ -38,6 +36,9 @@ WORKDIR /work
 
 # Add my src as /work
 ADD ./src /work
+
+# Set defaut ollama models directory to /runpod-volume where runpod will mount the volume by default
+ENV OLLAMA_MODELS="/runpod-volume"
 
 # Install runpod and its dependencies
 RUN pip install -r requirements.txt && chmod +x /work/start.sh
