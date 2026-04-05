@@ -30,7 +30,6 @@ RUN apt-get update --yes --quiet && DEBIAN_FRONTEND=noninteractive apt-get insta
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-
 # Set the working directory
 WORKDIR /work
 
@@ -43,11 +42,9 @@ ENV OLLAMA_MODELS="/runpod-volume"
 # Install runpod and its dependencies
 RUN pip install -r requirements.txt && chmod +x /work/start.sh
     
-# Model preloading logic (from second Dockerfile)
-ARG MODEL_NAMES
-ENV MODEL_NAMES="gemma4:latest"
-ADD ./embed_model/preload_model.sh /preload_model.sh
-RUN chmod +x /preload_model.sh && /preload_model.sh
-
 # Set the entrypoint
 ENTRYPOINT ["/bin/sh", "-c", "/work/start.sh"]
+
+# Preload a model
+ENV MODEL_NAMES="qwen3.5:0.8b"
+RUN chmod +x /work/preload_model.sh && /work/preload_model.sh
