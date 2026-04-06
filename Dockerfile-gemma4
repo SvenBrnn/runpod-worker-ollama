@@ -46,5 +46,5 @@ RUN pip install -r requirements.txt && chmod +x /work/start.sh
 ENTRYPOINT ["/bin/sh", "-c", "/work/start.sh"]
 
 # Preload a model
-ENV MODEL_NAMES="qwen3.5:0.8b"
+ENV MODEL_NAMES="gemma4:26b"
 RUN chmod +x /work/preload_model.sh && /work/preload_model.sh
