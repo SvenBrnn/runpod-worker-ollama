@@ -21,12 +21,18 @@ RUN apt-get update --yes --quiet && DEBIAN_FRONTEND=noninteractive apt-get insta
     python3.11-lib2to3 \
     python3.11-gdbm \
     python3.11-tk \
+    python3.11-venv \
     bash \
     curl && \
     ln -s /usr/bin/python3.11 /usr/bin/python && \
     curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Create virtual environment to isolate python dependencies
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3.11 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Set the working directory
 WORKDIR /work
